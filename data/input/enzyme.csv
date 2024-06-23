@@ -1,0 +1,6 @@
+enzyme,recognition_seq,gap_len,cut_seq_len
+BsaI,GGTCTC,1,4
+BbsI,GAAGAC,2,4
+SapI,GCTCTTC,1,3
+BsmBI,CGTCTC,1,4
+BbsI,GAAGAC,2,4

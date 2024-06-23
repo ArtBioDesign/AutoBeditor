@@ -1,0 +1,18 @@
+bedtools: bedtools
+bwa: bwa
+dinp: /home/yanghe/baseEditor/beditor/temp/YB01/YB01_beditor_input.tsv
+genome_fna_path: /home/yanghe/baseEditor/beditor/temp/YB01/YB01.fna
+genome_release: GCF_11111
+host: YB01
+keep_mutation_nonsense: false
+max_subs_per_codon: 1
+mimetism_level: medium  
+mutation_format: nucleotide
+mutation_type: N
+mutations: mutations
+non_intermutables: []
+reverse_mutations: false
+samtools: samtools
+
+0: /home/yanghe/baseEditor/beditor/data/YB01/00_input/
+1: /home/yanghe/baseEditor/beditor/data/YB01/01_sequences/'
