@@ -2,7 +2,7 @@
 # AutoBeditor
 ## Project Introduction  
 **AutoBeditor** is automated point mutation primer design tool for high-throughput protein modification.
-![AutoPMD](https://github.com/editSeqDesign/AutoPMD/blob/main/img/home.png) 
+![AutoPMD](https://github.com/editSeqDesign/AutoBeditor/blob/main/img/AutoBeditor1.png) 
 ## The main application scenarios of this software tool include:
 ### 1. Single point mutation primer design
 - **Description**：Support the design of primers for implementing single amino acid point mutations.
