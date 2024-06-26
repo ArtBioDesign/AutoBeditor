@@ -1,86 +1,49 @@
   
 # AutoBeditor
 ## Project Introduction  
-**AutoBeditor** is automated point mutation primer design tool for high-throughput protein modification.
+**AutoBeditor** is an editing sequence design tool for CRISPR/Cas mediated base editing technology.
 ![AutoPMD](https://github.com/editSeqDesign/AutoBeditor/blob/main/img/AutoBeditor1.png) 
+
 ## The main application scenarios of this software tool include:
-### 1. Single point mutation primer design
-- **Description**：Support the design of primers for implementing single amino acid point mutations.
-### 2. Double point mutation primer design
-- **Description**：Support the design of primers for implementing mutations at two amino acid sites.
-    - The distance between amino acid sites of two mutations is less than or equal to 15bp
-    - The distance between amino acid sites of two mutations is greater than 15bp but less than or equal to 120bp
-    - The distance between amino acid sites of two mutations is greater than 120bp
+### 1. sgRNA desgin
+- **Description**：Support the design of high-throughput sgRNA for base editing.
+### 2. Full process editing sequence design
+- **Description**：Support the design of full process editing Sequence for base editing.
+
 
   
 ## Installation
 ### python packages 
-We suggest using Python 3.8 for AutoPMD.
+We suggest using Python 3.8 for AutoBeditor.
 
 ```shell
-pip install -r requirements.txt
-
+conda env create -f environment.yml
 ```
 
 
 ## Usage & Example
-
 **Input:**
-- **Step 1:** Upload the plasmid template(gb) file and the target information(CSV) file to be edited.
+- **Step 1:** Upload the plasmid template(gb) file、the target information(TSV) file 、the genome(FAN) file、 the genome annotation(GFF) file、 the enzyme(CSV) file to be edited.
 - **Step 2:** provide the necessary configuration information.
-    - Example configuration (params.json):
+    - Example configuration (json):
       ```json
-      {
-      "pcr_single_primer_params":{
-          "PRIMER_OPT_SIZE": 29,
-          "PRIMER_MIN_SIZE": 27,
-          "PRIMER_MAX_SIZE": 36,
-          "PRIMER_OPT_TM": 65.0,
-          "PRIMER_MIN_TM": 60.0,
-          "PRIMER_MAX_TM": 75.0,
-          "PRIMER_MIN_GC": 20.0,
-          "PRIMER_MAX_GC": 80.0
-          },
-      "pcr_double_primer_params":{
-          "PRIMER_OPT_SIZE": 29,  
-          "PRIMER_MIN_SIZE": 27,
-          "PRIMER_MAX_SIZE": 36,
-          "PRIMER_OPT_TM": 65.0,
-          "PRIMER_MIN_TM": 60.0,
-          "PRIMER_MAX_TM": 75.0,
-          "PRIMER_MIN_GC": 20.0,
-          "PRIMER_MAX_GC": 80.0
-      },
-      "seq_primer_params":{
-          "PRIMER_OPT_SIZE": 20,
-          "PRIMER_MIN_SIZE": 18,
-          "PRIMER_MAX_SIZE": 25,
-          "PRIMER_OPT_TM": 65.0,
-          "PRIMER_MIN_TM": 55.0,
-          "PRIMER_MAX_TM": 75.0,
-          "PRIMER_MIN_GC": 20,
-          "PRIMER_MAX_GC": 80  
-        },
-      "global_params":{
-          "AMPLICONIC_MARKER_SEQ_START_LENGTH": [200,100],
-          "AMPLICONIC_GENE_TARGET_SEQ_LENGTH": 40    
-      },   
-      "input_mute_name":"自动化构建的样品引物设计.xlsx",  
-      "inputdir":"/input_mut/",
-      "outputdir":"/output/",
-      "targetGene_after_before_seq_n":80
-      }
+       param={ 
+        "genome_release" : "GCF001",
+        "host" : "yb01",
+        "be_names" : ["Target-AID"],
+        "pams" : ["NG"]
+        } 
       ```   
       
 
 **Execute:**
 
 ```shell
-python main.py  -i params.json
+python main.py 
 ```
 **Output:**
-- `sucess_site_mute.zip` 
-- `failture_site_mute.zip` 
+- `SgRNA Design Catalog(YB01)` 
+- `result.xlsx ` 
 
-These files will be generated in the `XXX/AutoPMD/src/data/output` directory.
 
+These files will be generated in the `XXX/AutoBeditor/data/output/` directory.  
