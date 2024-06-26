@@ -59,7 +59,7 @@ def search_enzyme_from_plasmid(enzyme_df,gb_seq_tuple,cut_num):
             enzyme_in_plasmid.append(temp)
     return  enzyme_in_plasmid
 
-#判断是否有可用酶,并根据用户需求选择酶------------------后期修正
+#判断是否有可用酶,并根据用户需求选择酶------------------
 def judge_is_not_availability_enzyme(enzyme_in_plasmid,enzyme_name='none'):
     enzyme_in_plasmid_df = pd.DataFrame(enzyme_in_plasmid)
     enzyme_in_plasmid_group = enzyme_in_plasmid_df.groupby('enzyme').count()
@@ -69,7 +69,7 @@ def judge_is_not_availability_enzyme(enzyme_in_plasmid,enzyme_name='none'):
     if enzyme_name == 'none':
         final_enzyme = enzyme_in_plasmid_df[enzyme_in_plasmid_df['enzyme']==final_enzyme_list[0]]
     else:
-        #酶唯一
+        #酶唯一  
         final_enzyme = enzyme_in_plasmid_df[enzyme_in_plasmid_df['enzyme']==enzyme_name]
     return final_enzyme
 
@@ -129,10 +129,15 @@ def create_plasmid_sequencing_primer(x,y,sgRNA_df):
 
 #取出基因组突变位点中的前后bp
 def extract_forward_backward_from_genome(sgRNA_df, genome_fna_path, mutation_info):
-    mutation_info.drop(columns=['nucleotide mutation'], inplace=True)   
+    # mutation_info.drop(columns=['nucleotide mutation'], inplace=True) 
+    sgRNA_df["genome coordinate"] = sgRNA_df["guide: id"].apply(lambda x: x.split("|")[0] )
+
     sgRNA_df = pd.merge(sgRNA_df,mutation_info,on='genome coordinate',how='inner')  
+    sgRNA_df["forward_seq_bp"] = 300  
+    sgRNA_df["backward_seq_bp"] = 300    
 
     def work(x1,x2,x3,x4):
+        
         arr = x1.split(':')
         id = arr[0]
         position = int(arr[1].split('-')[0])   

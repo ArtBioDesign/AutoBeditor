@@ -2,6 +2,8 @@ import re
 import pandas as pd
 import primer3
 from primerDesign.src.sgRNA_utils.sgRNA_primer_config import config   
+from os.path import exists,splitext,dirname,splitext,basename,realpath,abspath
+import os
 
 def del_Unnamed(df):
     """
@@ -50,6 +52,10 @@ def read_excel(p,sheet_name=None,):
     return xl.parse(sheet_name) 
 
 def to_excel(sheetname2df,datap,):
+    
+    if not exists( dirname(datap) ):
+        os.makedirs( dirname(datap) )
+
     writer = pd.ExcelWriter(datap)
     for sn in sheetname2df:
         sheetname2df[sn].to_excel(writer,sn)
